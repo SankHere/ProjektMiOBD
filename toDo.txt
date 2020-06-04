@@ -1,0 +1,1 @@
+1. inicjacja bazy danych (sprawdzic czy da sie jedna strza³ke w relacji) - bus, samochod, metry
