@@ -10,35 +10,66 @@
     <span style="font-size: 30pt">
         Strona główna<br>
 
-        <div th:each="ulica : ${ulice}">
-            <td><span th:text="${ulica}"></span></td>
-        </div>
-
     </span>
 
 
+    <form th:method="POST" th:object="${trasa}">
+        <fieldset>
+
+            <h1>Wybierz jaką trasę chcesz przebyć</h1>
+
+            <label>Wybierz skąd:</label>
+            <div class="form-group blu-margin">
+                <select class="form-control" name="ulicaSkad" id="ulicaSkad">
+                    <option value="0"></option>
+                    <option th:each="ulica : ${ulice}" th:value="${ulica}" th:text="${ulica}"></option>
+                </select>
+            </div>
+
+            <br>
+            <label>Wybierz dokąd:</label>
+            <div class="form-group blu-margin">
+                <select class="form-control" name="ulicaDokad" id="ulicaDokad">
+                    <option value="0"></option>
+                    <option th:each="ulica : ${ulice}" th:value="${ulica}" th:text="${ulica}"></option>
+                </select>
+            </div>
+
+            <br>
+            <label>Wybierz środek transportu:</label>
+            <div class="form-group blu-margin">
+
+                <div>
+                    <input type="radio" id="samochod" name="transport" value="samochod" checked>
+                    <label for="samochod">Samochod</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="autobus" name="transport" value="autobus">
+                    <label for="autobus">Autobus</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="pieszo" name="transport" value="pieszo">
+                    <label for="pieszo">Pieszo</label>
+                </div>
+
+            </div>
+
+            <br>
+
+            <button type="submit" class="btn btn-primary btn-raised">Pokaż trase</button>
+        </fieldset>
+    </form>
 
 
     <!--
 
 
+  <div th:each="ulica : ${ulice}">
+        <td><span th:text="${ulica}"></span></td>
+    </div>
 
-         <form th:method="POST" th:object="${ulice}">
-                <fieldset>
-
-                    <h1>Wybierz jaką trasę chcesz przybyć</h1>
-
-                    <div class="form-group blu-margin">
-                        <select class="form-control" th:field="${ulice.value}"  id="dropUlice">
-                        <option value="0">Wybierz skąd</option>
-                        <option th:each="ulice : ${ulice}" th:value="${ulice.value}" th:text="${ulice.value}"></option>
-                        </select>
-                    </div>
-
-
-
-                </fieldset>
-            </form>
 !-->
 
 

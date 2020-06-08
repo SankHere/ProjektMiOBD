@@ -15,6 +15,7 @@ public class Ulica {
     @Id
     private Long id;
     private String nazwa;
+
     @Relationship(type="CONNECT") private List<Polaczenie> polaczenie;
 
 

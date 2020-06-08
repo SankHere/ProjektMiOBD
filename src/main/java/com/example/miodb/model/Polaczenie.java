@@ -4,6 +4,7 @@ import org.neo4j.ogm.annotation.*;
 
 @RelationshipEntity(type = "CONNECT")
 public class Polaczenie {
+
     @Id
     @GeneratedValue
     private Long relationshipId;
