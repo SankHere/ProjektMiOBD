@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Strona domowa</title>
+</head>
+
+<body>
+
+<div id="main" class="container">
+    <span style="font-size: 30pt">
+        Strona główna<br>
+
+        <div th:each="ulica : ${ulice}">
+            <td><span th:text="${ulica}"></span></td>
+        </div>
+
+    </span>
+
+
+
+
+    <!--
+
+
+
+         <form th:method="POST" th:object="${ulice}">
+                <fieldset>
+
+                    <h1>Wybierz jaką trasę chcesz przybyć</h1>
+
+                    <div class="form-group blu-margin">
+                        <select class="form-control" th:field="${ulice.value}"  id="dropUlice">
+                        <option value="0">Wybierz skąd</option>
+                        <option th:each="ulice : ${ulice}" th:value="${ulice.value}" th:text="${ulice.value}"></option>
+                        </select>
+                    </div>
+
+
+
+                </fieldset>
+            </form>
+!-->
+
+
+</div>
+
+</body>
+</html>
