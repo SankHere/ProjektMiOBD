@@ -1,7 +1,11 @@
 package com.example.miodb.model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.neo4j.ogm.annotation.*;
 
+@Data
+@NoArgsConstructor
 @RelationshipEntity(type = "CONNECT")
 public class Polaczenie {
 
@@ -9,11 +13,11 @@ public class Polaczenie {
     @GeneratedValue
     private Long relationshipId;
     @Property
-    private int odleglosc;
+    private int samochód;
     @Property
-    private int bus;
+    private int autobus;
     @Property
-    private int samochod;
+    private int metry;
 
     @StartNode
     private Ulica ulica;
