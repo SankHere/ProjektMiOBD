@@ -62,15 +62,44 @@
         </fieldset>
     </form>
 
+    <div th:if="${wyszukanie.equals('pieszo')}">
+        <fieldset>
+            <h2>Najkrótszą trasą będzie:</h2>
 
-    <!--
+            <span th:each="v : ${values}">
+                <span th:if="${v} <= '100000000'"> -> </span>
+                <span th:text="${v}"></span>
+                <span th:if="${v} <= '100000000'"> metrów </span>
 
-
-  <div th:each="ulica : ${ulice}">
-        <td><span th:text="${ulica}"></span></td>
+            </span>
+        </fieldset>
     </div>
 
-!-->
+    <div th:if="${wyszukanie.equals('autobus')}">
+        <fieldset>
+            <h2>Najtańszą trasą autobusową będzie:</h2>
+
+            <span th:each="v : ${values}">
+                <span th:if="${v} <= '100000000'"> -> </span>
+                <span th:text="${v}"></span>
+                <span th:if="${v} <= '100000000'"> zł </span>
+
+            </span>
+        </fieldset>
+    </div>
+
+    <div th:if="${wyszukanie.equals('samochod')}">
+        <fieldset>
+            <h2>Najtańszą trasą samochodową będzie:</h2>
+
+            <span th:each="v : ${values}">
+                <span th:if="${v} <= '100000000'"> -> </span>
+                <span th:text="${v}"></span>
+                <span th:if="${v} <= '100000000'"> zł </span>
+
+            </span>
+        </fieldset>
+    </div>
 
 
 </div>
