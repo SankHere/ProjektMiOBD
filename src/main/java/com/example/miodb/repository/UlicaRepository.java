@@ -64,4 +64,21 @@ public interface UlicaRepository extends Neo4jRepository<Ulica, Long>{
             "YIELD nodeId, cost\n" +
             "RETURN gds.util.asNode(nodeId).name AS name, cost")
     Iterable<Map<String, Object>> getSamochodPath(@Param("ulica1") String ulica1, @Param("ulica2") String ulica2);
+
+    @Query("MATCH (start:Street {name: $ulica1}), (end:Street {name: $ulica2})\n" +
+            "CALL gds.alpha.shortestPath.stream({\n" +
+            "  nodeProjection: 'Street',\n" +
+            "  relationshipProjection: {\n" +
+            "    CONNECT: {\n" +
+            "      type: 'CONNECT',\n" +
+            "      properties: 'pieszo'\n" +
+            "    }\n" +
+            "  },\n" +
+            "  startNode: start,\n" +
+            "  endNode: end,\n" +
+            "  relationshipWeightProperty: 'pieszo'\n" +
+            "})\n" +
+            "YIELD nodeId, cost\n" +
+            "RETURN gds.util.asNode(nodeId).name AS name, cost")
+    Iterable<Map<String, Object>> getPieszoPath(@Param("ulica1") String ulica1, @Param("ulica2") String ulica2);
 }

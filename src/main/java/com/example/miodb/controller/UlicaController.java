@@ -88,6 +88,41 @@ public class UlicaController {
                 model.addAttribute("values", valuePieszo);
                 model.addAttribute("wyszukanie", "pieszo");
                 break;
+            case "wszystko":
+
+                Iterable<Map<String, Object>> pieszoDrogas = ulicaRepository.getPieszoPath(trasa.getUlicaSkad(), trasa.getUlicaDokad());
+                Iterable<Map<String, Object>> autDrogas = ulicaRepository.getAutobusPath(trasa.getUlicaSkad(), trasa.getUlicaDokad());
+                Iterable<Map<String, Object>> samoDrogas = ulicaRepository.getSamochodPath(trasa.getUlicaSkad(), trasa.getUlicaDokad());
+
+                ArrayList<Object> valueee = new ArrayList<Object>();
+
+                valueee.add("Pieszo: -> ");
+                for (Map<String, Object> pieszoDroga : pieszoDrogas) {
+                    for (Map.Entry<String, Object> entry : pieszoDroga.entrySet()) {
+
+                        valueee.add(entry.getValue());
+                    }
+                }
+
+                valueee.add("Autobus: -> ");
+                for (Map<String, Object> autDroga : autDrogas) {
+                    for (Map.Entry<String, Object> entry : autDroga.entrySet()) {
+
+                        valueee.add(entry.getValue());
+                    }
+                }
+                valueee.add("Samochód: -> ");
+                for (Map<String, Object> samoDroga : samoDrogas) {
+                    for (Map.Entry<String, Object> entry : samoDroga.entrySet()) {
+
+                        valueee.add(entry.getValue());
+                    }
+                }
+
+
+                model.addAttribute("values", valueee);
+                model.addAttribute("wyszukanie", "wszystko");
+                break;
         }
 
         //zeby w indexie widziało ulice wszystkie

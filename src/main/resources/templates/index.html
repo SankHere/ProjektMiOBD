@@ -41,17 +41,22 @@
 
                 <div>
                     <input type="radio" id="samochod" name="transport" value="samochod" checked>
-                    <label for="samochod">Samochod</label>
+                    <label for="samochod">Najtańsza trasa - przejazd samochód</label>
                 </div>
 
                 <div>
                     <input type="radio" id="autobus" name="transport" value="autobus">
-                    <label for="autobus">Autobus</label>
+                    <label for="autobus">Najtańsza trasa - przejazd autobus</label>
                 </div>
 
                 <div>
                     <input type="radio" id="pieszo" name="transport" value="pieszo">
-                    <label for="pieszo">Pieszo</label>
+                    <label for="pieszo">Najkrótsza trasa(metry)</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="wszystko" name="transport" value="wszystko">
+                    <label for="pieszo">Pokaż trasy względem czasu</label>
                 </div>
 
             </div>
@@ -61,6 +66,22 @@
             <button type="submit" class="btn btn-primary btn-raised">Pokaż trase</button>
         </fieldset>
     </form>
+
+    <div th:if="${wyszukanie.equals('wszystko')}">
+        <fieldset>
+            <h2>Wszystkie trasy według czasu:</h2>
+
+            <span th:each="v : ${values}">
+
+                 <span th:if="${v} == 'Pieszo: -> '"><br></span>
+                <span th:if="${v} == 'Autobus: -> '"><br></span>
+                <span th:if="${v} == 'Samochód: -> '"><br></span>
+                <span th:text="${v}"></span>
+                <span th:if="${v} <= '100000000'"> minut </span>
+
+            </span>
+        </fieldset>
+    </div>
 
     <div th:if="${wyszukanie.equals('pieszo')}">
         <fieldset>
@@ -83,14 +104,14 @@
                 <span th:if="${v} <= '100000000'"> -> </span>
                 <span th:text="${v}"></span>
                 <span th:if="${v} <= '100000000'"> zł </span>
-
             </span>
+
         </fieldset>
     </div>
 
     <div th:if="${wyszukanie.equals('samochod')}">
         <fieldset>
-            <h2>Najtańszą trasą samochodową będzie:</h2>
+            <h2>Najszybszą trasą samochodową będzie:</h2>
 
             <span th:each="v : ${values}">
                 <span th:if="${v} <= '100000000'"> -> </span>
@@ -98,6 +119,8 @@
                 <span th:if="${v} <= '100000000'"> zł </span>
 
             </span>
+
+            </table>
         </fieldset>
     </div>
 
